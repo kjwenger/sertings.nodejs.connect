@@ -12,7 +12,7 @@ info:
   license:
     name: "MIT"
     url: "https://opensource.org/licenses/MIT"
-host: "sertings.net"
+host: "localhost:8080"
 basePath: "/v1"
 tags:
 - name: "pet"
