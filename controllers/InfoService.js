@@ -8,7 +8,7 @@ exports.getInfo = function(args, res, next) {
    * returns Object
    **/
   var examples = {};
-  examples['application/json'] = "{}";
+  examples['application/json'] = {};
   if (Object.keys(examples).length > 0) {
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(examples[Object.keys(examples)[0]] || {}, null, 2));
