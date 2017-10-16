@@ -1,0 +1,76 @@
+---
+swagger: "2.0"
+info:
+  description: "This is the RESTful Web API for Sertings server. You can find out\
+    \ more about Swagger at [http://sertings.net](http://sertings.net) or on [irc.freenode.net,\
+    \ #swagger](http://sertings.net/irc/)."
+  version: "0.1.0"
+  title: "Sertings"
+  termsOfService: "http://sertings.net/terms/"
+  contact:
+    email: "kjwenger@yahoo.com"
+  license:
+    name: "MIT"
+    url: "https://opensource.org/licenses/MIT"
+host: "sertings.net"
+basePath: "/v1"
+tags:
+- name: "pet"
+  description: "Everything about your Pets"
+  externalDocs:
+    description: "Find out more"
+    url: "http://sertings.net"
+- name: "store"
+  description: "Access to Sertings orders"
+- name: "user"
+  description: "Operations about user"
+  externalDocs:
+    description: "Find out more about our store"
+    url: "http://sertings.net"
+schemes:
+- "http"
+paths:
+  /info:
+    get:
+      tags:
+      - "info"
+      summary: "Get information about API"
+      description: "Get version, entry points, and statistics of API"
+      operationId: "getInfo"
+      produces:
+      - "application/yaml"
+      - "application/xml"
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties: {}
+        400:
+          description: "Invalid status value"
+      x-swagger-router-controller: "Info"
+securityDefinitions:
+  settingstore_auth:
+    type: "oauth2"
+    authorizationUrl: "http://sertings.net/oauth/dialog"
+    flow: "implicit"
+    scopes:
+      write:settings: "modify settings in your account"
+      read:settings: "read your settings"
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+definitions:
+  Info:
+    type: "object"
+    properties:
+      version:
+        type: "string"
+      name:
+        type: "string"
+externalDocs:
+  description: "Find out more about Sertings"
+  url: "http://sertings.net"
